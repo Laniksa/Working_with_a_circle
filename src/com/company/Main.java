@@ -5,17 +5,8 @@ import java.util.Scanner;
 public class Main {
     public static double pi = 3.14;
 
-    public static double lineToNumeric(String str){
-        double okr = 0;
-        try{
-           okr = Double.parseDouble(str);
-        }catch(NumberFormatException e){
-            System.out.println("Вы не верно ввели размер окружности");
-        }
-        return okr;
-    }
-
     public static void area(double okr){
+
         System.out.println("Площадь окружности равна: "+(okr*okr)*pi);
     }
 
@@ -24,11 +15,20 @@ public class Main {
     }
 
     public static void main(String[] args) {
-	    Scanner scan = new Scanner(System.in);
-        System.out.println("Введите радиус круга: ");
-        String line = scan.nextLine();
-        area(lineToNumeric(line));
-        circle(lineToNumeric(line));
 
+            Scanner scan = new Scanner(System.in);
+        while (true) {
+            System.out.println("Введите радиус круга: ");
+            String line = scan.nextLine();
+             double okr;
+            try{
+                 okr = Double.parseDouble(line);
+                area(okr);
+                circle(okr);
+                break;
+            }catch(NumberFormatException e){
+                System.out.println("Вы не верно ввели размер окружности");
+            }
+        }
     }
 }
